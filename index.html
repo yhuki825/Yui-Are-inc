@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="合同会社ゆいあーる｜BCP作成・窓断熱コーティング・3DCADコンサルティング。沖縄から企業のレジリエンスと効率化を支えるパートナー。" />
+  <title>合同会社ゆいあーる | YUI-R LLC.</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===========================
+       CSS カスタムプロパティ
+    =========================== */
+    :root {
+      --color-primary:    #0891b2;  /* cyan-600 */
+      --color-primary-lt: #06b6d4;  /* cyan-500 */
+      --color-primary-dk: #0e7490;  /* cyan-700 */
+      --color-accent:     #f0f9ff;  /* sky-50 */
+      --color-dark:       #0f172a;  /* slate-900 */
+      --color-dark-2:     #1e293b;  /* slate-800 */
+      --color-mid:        #475569;  /* slate-600 */
+      --color-light:      #f8fafc;  /* slate-50 */
+      --color-border:     #e2e8f0;  /* slate-200 */
+      --color-white:      #ffffff;
+      --font-jp:          'Noto Sans JP', sans-serif;
+      --font-en:          'Inter', sans-serif;
+      --radius-lg:        1.5rem;
+      --radius-xl:        2rem;
+      --shadow-card:      0 4px 24px rgba(0, 0, 0, 0.08);
+      --shadow-hover:     0 12px 40px rgba(8, 145, 178, 0.18);
+      --transition:       all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ===========================
+       リセット & ベース
+    =========================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-jp);
+      background-color: var(--color-light);
+      color: var(--color-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a  { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    ::selection { background: #cffafe; color: var(--color-dark); }
+
+    /* ===========================
+       ユーティリティ
+    =========================== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-en);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      background: var(--color-accent);
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    .divider {
+      width: 3rem;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-primary-lt));
+      border-radius: 999px;
+      margin-top: 1rem;
+    }
+
+    /* ===========================
+       ナビゲーション
+    =========================== */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1.5rem 0;
+      transition: var(--transition);
+    }
+
+    #navbar.scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 1rem 0;
+      box-shadow: 0 1px 0 var(--color-border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-logo-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.625rem;
+      background: var(--color-primary);
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-en);
+      font-weight: 800;
+      font-size: 1.125rem;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    #navbar:not(.scrolled) .nav-logo-icon {
+      background: var(--color-white);
+      color: var(--color-primary-dk);
+    }
+
+    .nav-logo-text {
+      font-weight: 700;
+      font-size: 1.0625rem;
+      letter-spacing: 0.04em;
+      color: var(--color-white);
+      transition: var(--transition);
+    }
+
+    #navbar.scrolled .nav-logo-text { color: var(--color-dark); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      font-family: var(--font-en);
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 255, 0.85);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-primary-lt);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--color-white); }
+    .nav-links a:hover::after { width: 100%; }
+
+    #navbar.scrolled .nav-links a { color: var(--color-mid); }
+    #navbar.scrolled .nav-links a:hover { color: var(--color-primary); }
+    #navbar.scrolled .nav-links a::after { background: var(--color-primary); }
+
+    /* ハンバーガー */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 0.25rem;
+      background: none;
+      border: none;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--color-white);
+      border-radius: 999px;
+      transition: var(--transition);
+    }
+
+    #navbar.scrolled .nav-hamburger span { background: var(--color-dark); }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* モバイルメニュー */
+    .nav-mobile {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: var(--color-white);
+      padding: 1.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .nav-mobile.open { display: flex; flex-direction: column; gap: 1rem; }
+
+    .nav-mobile a {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--color-dark-2);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--color-border);
+      transition: color 0.2s;
+    }
+
+    .nav-mobile a:last-child { border-bottom: none; }
+    .nav-mobile a:hover { color: var(--color-primary); }
+
+    /* ===========================
+       ヒーロー
+    =========================== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(8, 47, 73, 0.88) 0%, rgba(14, 116, 144, 0.60) 60%, rgba(6, 182, 212, 0.30) 100%),
+        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80&auto=format&fit=crop') center/cover no-repeat;
+    }
+
+    /* 波形装飾 */
+    .hero-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .hero-wave svg { display: block; width: 100%; height: 80px; }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 8rem 0 6rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      color: var(--color-white);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: #67e8f9;
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 900;
+      color: var(--color-white);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: #67e8f9;
+    }
+
+    .hero-desc {
+      font-size: clamp(1rem, 2vw, 1.1875rem);
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.85;
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      background: var(--color-primary);
+      color: var(--color-white);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      transition: var(--transition);
+      box-shadow: 0 4px 24px rgba(8, 145, 178, 0.45);
+    }
+
+    .hero-cta:hover {
+      background: var(--color-primary-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(8, 145, 178, 0.55);
+    }
+
+    .hero-cta svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* スクロールインジケーター */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-family: var(--font-en);
+      font-size: 0.6875rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .scroll-mouse {
+      width: 24px;
+      height: 38px;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+      display: flex;
+      justify-content: center;
+      padding-top: 6px;
+    }
+
+    .scroll-dot {
+      width: 4px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 999px;
+      animation: scrollDot 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollDot {
+      0%, 100% { transform: translateY(0); opacity: 1; }
+      50%       { transform: translateY(8px); opacity: 0.3; }
+    }
+
+    /* ===========================
+       統計バー
+    =========================== */
+    #stats {
+      background: var(--color-dark);
+      padding: 3rem 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: var(--font-en);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--color-primary-lt);
+      line-height: 1;
+      margin-bottom: 0.375rem;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: 0.04em;
+    }
+
+    /* ===========================
+       About セクション
+    =========================== */
+    #about {
+      padding: 7rem 0;
+      background: var(--color-white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 1.0625rem;
+      color: var(--color-mid);
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .value-card {
+      background: var(--color-light);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .value-card:nth-child(even) {
+      background: var(--color-accent);
+      border-color: #bae6fd;
+    }
+
+    .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--color-primary-lt);
+    }
+
+    .value-number {
+      font-family: var(--font-en);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .value-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.375rem;
+    }
+
+    .value-desc {
+      font-size: 0.8125rem;
+      color: #94a3b8;
+    }
+
+    /* ===========================
+       Services セクション
+    =========================== */
+    #services {
+      padding: 7rem 0;
+      background: var(--color-light);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .service-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 6rem;
+    }
+
+    .service-block:last-child { margin-bottom: 0; }
+
+    .service-block.reverse { direction: rtl; }
+    .service-block.reverse > * { direction: ltr; }
+
+    .service-image-wrap {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.14);
+    }
+
+    .service-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .service-image-wrap:hover img { transform: scale(1.06); }
+
+    .service-icon-badge {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      width: 3.25rem;
+      height: 3.25rem;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-radius: 0.875rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .service-icon-badge svg { width: 1.5rem; height: 1.5rem; }
+
+    .service-number {
+      font-family: var(--font-en);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .service-title {
+      font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+
+    .service-desc {
+      font-size: 1.0625rem;
+      color: var(--color-mid);
+      line-height: 1.85;
+      margin-bottom: 1.75rem;
+    }
+
+    .service-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .service-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: #334155;
+    }
+
+    .service-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 1.25rem;
+      height: 1.25rem;
+      background: var(--color-accent);
+      border: 1.5px solid var(--color-primary-lt);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.125rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230891b2' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+      background-size: 70%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* ===========================
+       Company セクション
+    =========================== */
+    #company {
+      padding: 7rem 0;
+      background: var(--color-white);
+    }
+
+    .company-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .company-table { width: 100%; border-collapse: collapse; }
+
+    .company-table tr { border-bottom: 1px solid var(--color-border); }
+    .company-table tr:first-child { border-top: 1px solid var(--color-border); }
+
+    .company-table th,
+    .company-table td {
+      padding: 1.125rem 0.75rem;
+      font-size: 0.9375rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .company-table th {
+      width: 7rem;
+      font-weight: 700;
+      color: var(--color-primary-dk);
+      white-space: nowrap;
+    }
+
+    .company-table td { color: var(--color-mid); }
+
+    /* CTAカード */
+    .cta-card {
+      background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-2) 100%);
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      color: var(--color-white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      top: -4rem;
+      right: -4rem;
+      width: 16rem;
+      height: 16rem;
+      background: radial-gradient(circle, rgba(8, 145, 178, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-card::after {
+      content: '';
+      position: absolute;
+      bottom: -3rem;
+      left: -3rem;
+      width: 12rem;
+      height: 12rem;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-card-inner { position: relative; z-index: 1; }
+
+    .cta-card h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #67e8f9;
+      margin-bottom: 1rem;
+      line-height: 1.35;
+    }
+
+    .cta-card p {
+      font-size: 0.9375rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.85;
+      margin-bottom: 2rem;
+    }
+
+    .cta-divider {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-footer-label {
+      font-size: 0.8125rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 0.25rem;
+    }
+
+    .cta-footer-text {
+      font-family: var(--font-en);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.04em;
+    }
+
+    /* ===========================
+       フッター
+    =========================== */
+    #footer {
+      background: var(--color-dark);
+      padding: 3rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer-logo-icon {
+      width: 2.25rem;
+      height: 2.25rem;
+      background: var(--color-primary);
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-en);
+      font-weight: 800;
+      color: var(--color-white);
+    }
+
+    .footer-logo-text {
+      font-weight: 700;
+      color: var(--color-white);
+      font-size: 1rem;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-nav a {
+      font-family: var(--font-en);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover { color: var(--color-primary-lt); }
+
+    .footer-copy {
+      font-size: 0.8125rem;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* ===========================
+       スクロールアニメーション
+    =========================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ===========================
+       レスポンシブ
+    =========================== */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .about-grid,
+      .company-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+      .service-block {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .service-block.reverse { direction: ltr; }
+
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+      .stat-item:last-child { border-bottom: none; }
+    }
+
+    @media (max-width: 600px) {
+      .about-values { grid-template-columns: 1fr 1fr; }
+      .hero-title { font-size: 2.25rem; }
+      .cta-card { padding: 2rem; }
+      .footer-nav { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===========================
+       ナビゲーション
+  =========================== -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+
+        <a href="#hero" class="nav-logo" aria-label="合同会社ゆいあーる トップへ">
+          <div class="nav-logo-icon">Y</div>
+          <span class="nav-logo-text">合同会社ゆいあーる</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#company">Company</a>
+        </div>
+
+        <button class="nav-hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+
+      <div class="nav-mobile" id="mobileMenu" role="navigation" aria-label="モバイルメニュー">
+        <a href="#about"    id="mobileAbout">About</a>
+        <a href="#services" id="mobileServices">Services</a>
+        <a href="#company"  id="mobileCompany">Company</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ===========================
+       ヒーロー
+  =========================== -->
+  <section id="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+
+    <div class="container hero-content">
+      <div class="hero-badge">沖縄発 ・ 全国対応</div>
+
+      <h1 class="hero-title">
+        未来を<em>「結び」</em><br>
+        事業を<em>「強く」</em>する。
+      </h1>
+
+      <p class="hero-desc">
+        私たちは、沖縄から企業のレジリエンス（回復力）と効率化を支えるパートナーです。
+        BCP対策から環境改善、DX推進まで、専門知識で事業の明日を創ります。
+      </p>
+
+      <a href="#services" class="hero-cta">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+        事業内容を見る
+      </a>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+      <span>Scroll</span>
+    </div>
+
+    <div class="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#0f172a"/>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       統計バー
+  =========================== -->
+  <section id="stats" aria-label="実績">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-number">3</div>
+          <div class="stat-label">専門サービス領域</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-1">
+          <div class="stat-number">沖縄</div>
+          <div class="stat-label">地域密着・全国対応</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-2">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">継続的な伴走サポート</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       About
+  =========================== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-text reveal">
+          <span class="section-label">About Us</span>
+          <h2 class="section-title">私たちの想い</h2>
+          <div class="divider" style="margin-bottom: 2rem;"></div>
+
+          <p>
+            社名の「ゆいあーる」には、沖縄の相互扶助の精神である「ゆいまーる」と、
+            信頼（Reliability）・再構築（Rebuild）・資源（Resource）といった「R」の想いを込めています。
+          </p>
+          <p>
+            単なるコンサルティングにとどまらず、現場に寄り添い、具体的な解決策を形にする。
+            お客様の事業が、いかなる困難にも負けず、持続的に成長していけるよう、私たちは伴走し続けます。
+          </p>
+          <p>
+            沖縄全域はもちろん、オンラインを活用した全国対応も承っております。
+            まずはお気軽にご相談ください。
+          </p>
+        </div>
+
+        <div class="about-values">
+          <div class="value-card reveal reveal-delay-1">
+            <div class="value-number">01</div>
+            <div class="value-title">専門性</div>
+            <div class="value-desc">高度な知見に基づく提案</div>
+          </div>
+          <div class="value-card reveal reveal-delay-2">
+            <div class="value-number">02</div>
+            <div class="value-title">地域密着</div>
+            <div class="value-desc">沖縄の特性に合わせた支援</div>
+          </div>
+          <div class="value-card reveal reveal-delay-3">
+            <div class="value-number">03</div>
+            <div class="value-title">革新</div>
+            <div class="value-desc">最新技術による効率化</div>
+          </div>
+          <div class="value-card reveal reveal-delay-4">
+            <div class="value-number">04</div>
+            <div class="value-title">誠実</div>
+            <div class="value-desc">丁寧なコミュニケーション</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       Services
+  =========================== -->
+  <section id="services">
+    <div class="container">
+
+      <div class="services-header reveal">
+        <span class="section-label">Services</span>
+        <h2 class="section-title">事業内容</h2>
+        <div class="divider" style="margin: 1rem auto 0;"></div>
+      </div>
+
+      <!-- Service 01 : BCP -->
+      <div class="service-block reveal">
+        <div class="service-image-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=80&auto=format&fit=crop"
+            alt="BCP作成・運用コンサルティングのイメージ"
+            loading="lazy"
+          />
+          <div class="service-icon-badge" aria-hidden="true">
+            <!-- Shield icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="service-text">
+          <div class="service-number">Service 01</div>
+          <h3 class="service-title">BCP作成 /<br>運用コンサルティング</h3>
+          <p class="service-desc">
+            企業の有事における事業継続を支える、実効性の高い計画策定をサポート。
+            台風・地震・感染症など沖縄特有のリスクを踏まえた、
+            地域に根ざしたリスク管理をご提案します。
+          </p>
+          <ul class="service-list">
+            <li>リスクアセスメントと現状分析</li>
+            <li>BCP文書の策定・整備支援</li>
+            <li>訓練・教育プログラムの設計</li>
+            <li>定期的な見直しと継続的な運用支援</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Service 02 : 窓断熱 -->
+      <div class="service-block reverse reveal">
+        <div class="service-image-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80&auto=format&fit=crop"
+            alt="窓断熱コーティング施工のイメージ"
+            loading="lazy"
+          />
+          <div class="service-icon-badge" aria-hidden="true">
+            <!-- Sun icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1"  x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22"  x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1"  y1="12" x2="3"  y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="service-text">
+          <div class="service-number">Service 02</div>
+          <h3 class="service-title">窓断熱コーティング施工</h3>
+          <p class="service-desc">
+            沖縄の強烈な日差しを遮り、空調効率を劇的に改善。
+            環境負荷の低減とランニングコスト削減を両立する
+            最新のコーティング技術を提供します。
+          </p>
+          <ul class="service-list">
+            <li>遮熱・断熱効果の現地診断</li>
+            <li>高性能ウィンドウフィルム施工</li>
+            <li>省エネ効果のシミュレーション提供</li>
+            <li>施工後のアフターフォロー</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Service 03 : 3DCAD -->
+      <div class="service-block reveal">
+        <div class="service-image-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=80&auto=format&fit=crop"
+            alt="3DCADデータ作成・運用コンサルのイメージ"
+            loading="lazy"
+          />
+          <div class="service-icon-badge" aria-hidden="true">
+            <!-- CPU icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+              <rect x="9" y="9" width="6" height="6"/>
+              <line x1="9"  y1="1"  x2="9"  y2="4"/>
+              <line x1="15" y1="1"  x2="15" y2="4"/>
+              <line x1="9"  y1="20" x2="9"  y2="23"/>
+              <line x1="15" y1="20" x2="15" y2="23"/>
+              <line x1="20" y1="9"  x2="23" y2="9"/>
+              <line x1="20" y1="14" x2="23" y2="14"/>
+              <line x1="1"  y1="9"  x2="4"  y2="9"/>
+              <line x1="1"  y1="14" x2="4"  y2="14"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="service-text">
+          <div class="service-number">Service 03</div>
+          <h3 class="service-title">3DCADデータ作成 /<br>運用コンサルティング</h3>
+          <p class="service-desc">
+            設計・製造現場のDXを加速。高度な3Dモデリング技術と、
+            その効率的な運用プロセスを構築・提供します。
+            データ資産の活用で、競争力を高めます。
+          </p>
+          <ul class="service-list">
+            <li>3DCADモデリング・データ作成</li>
+            <li>既存図面の3Dデータ化支援</li>
+            <li>CAD運用フローの設計・改善</li>
+            <li>設計・製造部門向けDXコンサルティング</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       Company
+  =========================== -->
+  <section id="company">
+    <div class="container">
+
+      <div class="reveal" style="margin-bottom: 3.5rem;">
+        <span class="section-label">Company</span>
+        <h2 class="section-title">会社概要</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="company-grid">
+
+        <div class="reveal">
+          <table class="company-table">
+            <tbody>
+              <tr>
+                <th scope="row">会社名</th>
+                <td>合同会社ゆいあーる</td>
+              </tr>
+              <tr>
+                <th scope="row">英語名</th>
+                <td>YUI-R LLC.</td>
+              </tr>
+              <tr>
+                <th scope="row">代表者</th>
+                <td>三上 健太</td>
+              </tr>
+              <tr>
+                <th scope="row">所在地</th>
+                <td>
+                  〒904-2243<br>
+                  沖縄県うるま市字宮里849番地11
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">事業内容</th>
+                <td>
+                  BCP作成・運用コンサルティング<br>
+                  窓断熱コーティング施工<br>
+                  3DCADデータ作成・運用コンサルティング
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">対応エリア</th>
+                <td>沖縄全域・オンライン対応（全国）</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cta-card reveal reveal-delay-1">
+          <div class="cta-card-inner">
+            <h3>事業を加速させる<br>一歩を、ともに。</h3>
+            <p>
+              合同会社ゆいあーるは、専門的なコンサルティングと確かな技術施工を通じて、
+              貴社の事業価値を最大限に引き出すお手伝いをいたします。
+              沖縄全域および、オンラインでのご相談も承っております。
+              どうぞお気軽にご連絡ください。
+            </p>
+            <hr class="cta-divider" />
+            <div class="cta-footer-label">お気軽にお問い合わせください</div>
+            <div class="cta-footer-text">YUI-R LLC. &nbsp;/&nbsp; All Rights Reserved.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       フッター
+  =========================== -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div class="footer-logo">
+          <div class="footer-logo-icon">Y</div>
+          <span class="footer-logo-text">合同会社ゆいあーる</span>
+        </div>
+
+        <nav class="footer-nav" aria-label="フッターナビゲーション">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#company">Company</a>
+        </nav>
+
+        <p class="footer-copy">
+          &copy; <span id="year"></span> 合同会社ゆいあーる. All Rights Reserved.
+        </p>
+
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===========================
+       JavaScript
+  =========================== -->
+  <script>
+    /* ---------- 年号 ---------- */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ---------- ナビゲーション ---------- */
+    const navbar     = document.getElementById('navbar');
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    // スクロールでナビを変化
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    // ハンバーガーメニュー
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // モバイルメニューのリンクをクリックしたら閉じる
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ---------- スクロールアニメーション ---------- */
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
